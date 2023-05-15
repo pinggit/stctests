@@ -1,0 +1,126 @@
+stcinfo:
+  chassisip: "10.204.216.89"
+  xmlconfname: "stc-working-configs/JCNR_L2_Perf_IPv4-p1p3.tcc.xml"
+  stcports: "12/2 12/8"         #single test
+  test_comment: ""              #single test
+
+  # "task_type": "full" or "dbread"
+  #    "full" - run full test by tester
+  #    "tester" - run tester only, no db read
+  #    "dbread" - read test info from db, no need to run test by tester
+  task_type: "full"             
+  task_type: "dbread"
+
+  #"task_run_by": determines what tests the tester will run:
+  #    "task_list" - run tests in task_list
+  #    "task_tags" - run tests in task_list_with_tags that match task_tag_selector
+  #    "all" - run all tests in test_list and task_list_with_tags
+  #    "single" - run single test defined by "stcports", "xmlconfname"
+  #    not define: same as "single"
+
+  task_run_by: "task_list"    # "task_list", "task_tags", "single" or "all"
+  #task_run_by: "task_tags"
+  #task_run_by: "all"
+
+  task_list:
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+    #  stcports: "12/1 12/3"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+    #  stcports: "12/1 12/3"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+    #  stcports: "12/1 12/3"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+    #  stcports: "12/1 12/3"
+
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/2 12/7"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/2 12/7"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/2 12/7"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/2 12/7"
+
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/7 12/8"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/7 12/8"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/7 12/8"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/7 12/8"
+
+  task_tag_selector: ["v710"]
+  task_tag_selector: ["imix", "v710", "ipv6"]
+  task_list_with_tags:
+    # e810-1box tests
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/1 12/3"
+      test_comment: ""
+      tags: ["e810", "1box", "fixed", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/1 12/3"
+      test_comment: ""
+      tags: ["e810", "1box", "imix", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/1 12/3"
+      test_comment: ""
+      tags: ["e810", "1box", "fixed", "ipv6", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/1 12/3"
+      test_comment: ""
+      tags: ["e810", "1box", "imix", "ipv6", "l2"]
+
+    # e810-2box tests
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/3 12/5"
+      test_comment: ""
+      tags: ["e810", "2box", "fixed", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/3 12/5"
+      test_comment: ""
+      tags: ["e810", "2box", "imix", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/3 12/5"
+      test_comment: ""
+      tags: ["e810", "2box", "fixed", "ipv6", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/3 12/5"
+      test_comment: ""
+      tags: ["e810", "2box", "imix", "ipv6", "l2"]
+
+    # v710-1box tests
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "fixed", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "imix", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "fixed", "ipv6", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "imix", "ipv6", "l2"]
+
+    # v710-2box tests
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+      stcports: "12/2 12/8"
+      test_comment: ""
+      tags: ["v710", "2box", "fixed", "ipv4", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+      stcports: "12/2 12/8"
+      test_comment: ""
+      tags: "v710-2box, imix, ipv4, l2"
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+      stcports: "12/2 12/8"
+      test_comment: ""
+      tags: ["v710", "2box", "fixed", "ipv6", "l2"]
+    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+      stcports: "12/2 12/8"
+      test_comment: ""
+      tags: ["v710", "2box", "imix", "ipv6", "l2"]

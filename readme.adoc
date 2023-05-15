@@ -1,0 +1,89 @@
+= Set up Python
+
+Please consult the Spirent TestCenter Base and Test Package Release Notes for
+supported versions of Python. Release notes are included on the DVD and are
+available as a "Related Resource" on each software download page (http:
+//support.spirent.com). 
+
+To set up Python to run with Spirent TestCenter:
+
+. Copy StcPython.py to your scripts directory.
+. Open StcPython.py for editing and modify the following line to point to your
+   Spirent TestCenter installation directory, or optionally set the system environment variable.
+
+   os.environ['STC_PRIVATE_INSTALL_DIR'] = STC_PRIVATE_INSTALL_DIR
+
+Verify the set up:
+
+. cd to your scripts directory.
+
+. Type python at the command line and press Enter.
+.  The Python interpreter starts.
+
+. Type from StcPython import StcPython and press Enter.
+
+. Type stc = StcPython()and press enter.
+
+. Type print stc.get('system1', 'version')and press Enter.
+  The Spirent TestCenter version will display.
+
+Python is ready to be used with Spirent TestCenter Automation.
+
+= usage examples
+
+== script help:
+
+    usage: stctests.py [-h] [--config CONFIG] [--chassisip CHASSISIP] [--stcports STCPORTS]
+                    [--xmlconfname XMLCONFNAME] [--task_type {full,tester,dbread}]
+                    [--task_run_by {task_list,task_tags,all,single}]
+                    [--task_tag_selector [TASK_TAG_SELECTOR [TASK_TAG_SELECTOR ...]]]
+                    [--task_list [TASK_LIST [TASK_LIST ...]]]
+                    [--task_list_with_tags [TASK_LIST_WITH_TAGS [TASK_LIST_WITH_TAGS ...]]]
+
+    STC test
+
+    optional arguments:
+    -h, --help              show this help message and exit
+    --config CONFIG, -c CONFIG
+                            config file name
+    --chassisip CHASSISIP, -i CHASSISIP
+                            Spirent test center (STC) chassis ip
+    --stcports STCPORTS, -p STCPORTS
+                            STC ports, e.g. "1/1 1/2"
+    --xmlconfname XMLCONFNAME, -x XMLCONFNAME
+                            STC xml config file name
+    --task_type {full,dbread,tester}, -T {full,dbread,tester}
+                            task type
+    --task_run_by {task_list,task_tags,all,single}, -t {task_list,task_tags,all,single}
+                            task run by
+    --task_tag_selector [TASK_TAG_SELECTOR [TASK_TAG_SELECTOR ...]], -s [TASK_TAG_SELECTOR [TASK_TAG_
+    SELECTOR ...]]
+                            task tag selector
+    --task_list [TASK_LIST [TASK_LIST ...]], -l [TASK_LIST [TASK_LIST ...]]
+                            task list
+    --task_list_with_tags [TASK_LIST_WITH_TAGS [TASK_LIST_WITH_TAGS ...]], -L [TASK_LIST_WITH_TAGS [T
+    ASK_LIST_WITH_TAGS ...]]
+                            task list with tags
+
+== run from vim with AsyncRun
+
+    :AsyncRun -save=1 -focus=0 -cwd=$(VIM_FILEDIR) -mode=term -rows=20 CMD | tee -a jcnrtestlogs.adoc
+
+== run a single test from CLI
+
+if you want to run a single test from CLI:
+
+    python stctests.py -x stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml -p "12/2 12/7" -t "single"
+
+the -t "single" (or --task_run_by "single")has to be specified to override task_run_by defined (if any) in config file.
+
+use "--task_list" to specify one or more tests to run from CLI:
+
+    python stctests.py --task_run_by "task_list" --task_list '[{"xmlconfname": "JCNR_L2_Perf_1.xml", "stcports": "1/1 1/2"}]'
+    python stctests.py --task_run_by "task_list" --task_list '[{"xmlconfname": "JCNR_L2_Perf_1.xml", "stcports": "1/1 1/2"}, {"xmlconfname": "JCNR_L2_Perf_2.xml", "stcports": "1/3 1/4"}]'
+
+analysing db only, and generate yaml result report:
+
+    :AsyncRun -save=1 -focus=0 -cwd=$(VIM_FILEDIR) -mode=term -rows=20 python stctests.py -T dbread
+
+
