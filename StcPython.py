@@ -7,7 +7,8 @@ from platform import python_version
 
 class StcPython(object):
 
-    def __init__(self):
+    def __init__(self,
+                 stcInstallDir="/opt/stc/Spirent_TestCenter_5.17/Spirent_TestCenter_Application_Linux/"):
         self.stcInt = None
         if sys.hexversion < 0x020605F0 or sys.hexversion > 0x030608F0 \
         or (sys.hexversion > 0x030404F0 and sys.hexversion < 0x030509F0):
@@ -18,7 +19,8 @@ class StcPython(object):
         #   'C:/Program Files (x86)/Spirent Communications/Spirent TestCenter 4.40/Spirent TestCenter Application'
         # Linux example:
         #   /home/user/Spirent_TestCenter_4.40/Spirent_TestCenter_Application_Linux
-        STC_PRIVATE_INSTALL_DIR = "/opt/stc/Spirent_TestCenter_5.17/Spirent_TestCenter_Application_Linux/"
+        STC_PRIVATE_INSTALL_DIR = stcInstallDir
+
         if 'STC_PRIVATE_INSTALL_DIR' not in os.environ:
             try:
                 os.environ['STC_PRIVATE_INSTALL_DIR'] = STC_PRIVATE_INSTALL_DIR

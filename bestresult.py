@@ -18,8 +18,8 @@ class Bestresult:
             # locate wanted columns
             (framesize,framesize_type)                  = (lrow[i] for i in (0,1))
             (thput_pps,thput_perc,frame_loss_perc)      = (lrow[i] for i in (2,3,4))
-            (min_latency_us,max_latency_us)             = (lrow[i] for i in (5,6))
-            (min_jitter_us,max_jitter_us,avg_jitter_us) = (lrow[i] for i in (7,8,9))
+            (min_latency_us,max_latency_us,avg_latency_us) = (lrow[i] for i in (5,6,7))
+            (min_jitter_us,max_jitter_us,avg_jitter_us) = (lrow[i] for i in (8,9,10))
 
             if 'iMIX' in lrow: framesize = 'IMIX'
 
@@ -35,6 +35,7 @@ class Bestresult:
             # change from us to ns to align with CN2
             min_latency_ns = min_latency_us * 1000
             max_latency_ns = max_latency_us * 1000
+            avg_latency_ns = avg_latency_us * 1000
             min_jitter_ns  = min_jitter_us * 1000
             max_jitter_ns  = max_jitter_us * 1000
             avg_jitter_ns  = avg_jitter_us * 1000
@@ -51,10 +52,11 @@ class Bestresult:
                 self.best_result_dict[test]["thput_mpps"]      = thput_mpps
                 self.best_result_dict[test]["thput_gbps"]      = thput_gbps
                 self.best_result_dict[test]["frame_loss_perc"] = frame_loss_perc
-                self.best_result_dict[test]["max_latency_ns"]  = max_latency_ns
                 self.best_result_dict[test]["min_latency_ns"]  = min_latency_ns
-                self.best_result_dict[test]["max_jitter_ns"]   = max_jitter_ns
+                self.best_result_dict[test]["max_latency_ns"]  = max_latency_ns
+                self.best_result_dict[test]["avg_latency_ns"]  = avg_latency_ns
                 self.best_result_dict[test]["min_jitter_ns"]   = min_jitter_ns
+                self.best_result_dict[test]["max_jitter_ns"]   = max_jitter_ns
                 self.best_result_dict[test]["avg_jitter_ns"]   = avg_jitter_ns
                 self.best_result_dict[test]["env"]             = ""
                 self.best_result_dict[test]["metadata"]        = {}
@@ -68,10 +70,11 @@ class Bestresult:
                     self.best_result_dict[test]["thput_mpps"]      = thput_mpps
                     self.best_result_dict[test]["thput_gbps"]      = thput_gbps
                     self.best_result_dict[test]["frame_loss_perc"] = frame_loss_perc
-                    self.best_result_dict[test]["max_latency_ns"]  = max_latency_ns
                     self.best_result_dict[test]["min_latency_ns"]  = min_latency_ns
-                    self.best_result_dict[test]["max_jitter_ns"]   = max_jitter_ns
+                    self.best_result_dict[test]["max_latency_ns"]  = max_latency_ns
+                    self.best_result_dict[test]["avg_latency_ns"]  = avg_latency_ns
                     self.best_result_dict[test]["min_jitter_ns"]   = min_jitter_ns
+                    self.best_result_dict[test]["max_jitter_ns"]   = max_jitter_ns
                     self.best_result_dict[test]["avg_jitter_ns"]   = avg_jitter_ns
 
         return self.best_result_dict
@@ -84,7 +87,7 @@ class Bestresult:
         sqlDumpTableThputColumns=f"PRAGMA table_info({table_thput});"
         wantedColumns=("Result, FrameSize, FrameSizeType, "
                     "FrameRate, Throughput, PercentLoss, "
-                    "MinLatency, MaxLatency, "
+                    "MinLatency, MaxLatency, AvgLatency, "
                     "MinJitter, MaxJitter, AvgJitter")
         #sqlSelectColumns=f"SELECT {wantedColumns} FROM {table_thput} WHERE id = 1"
         sqlSelectColumns=f"SELECT {wantedColumns} FROM {table_thput}"
@@ -168,16 +171,16 @@ class Bestresult:
         p2="/".join(rows_port_loc[1][0].split('/')[-2:])    #12/3
         ports=",".join(sorted([p1,p2]))                     #12/1,12/3
         dBoxmode = {
-            "12/1,12/3": "e810_1box",
-            "12/3,12/5": "e810_2box",
-            "12/1,12/5": "e810_2box",
-            "12/2,12/8": "v710_2box",
-            "12/2,12/7": "v710_1box",
-            "12/7,12/8": "v710_2box",
+            "12/1,12/3": "1box_e810",
+            "12/3,12/5": "2box_e810",
+            "12/1,12/5": "2box_e810",
+            "12/2,12/8": "2box_v710",
+            "12/2,12/7": "1box_v710",
+            "12/7,12/8": "2box_v710",
         }
         boxmode=dBoxmode.get(ports, "boxmode_unknown")
 
-        platform = ipmode+'_'+boxmode
+        platform = boxmode+'_'+ipmode
 
         # get best result from thput table{{{2}}}
         if not self.best_result_dicts.get(platform):
@@ -240,7 +243,7 @@ class Bestresult:
         for platform in self.best_result_dicts:
 
             result_yaml_dict = {
-                "project"  : "jcnr",
+                "project"  : "jcnr_new",
                 "category" : "jcnr_l2_perf",
                 "release"  : release,
                 "platform" : platform,

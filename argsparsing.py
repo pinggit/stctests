@@ -14,6 +14,7 @@ def argsparsing(args):  # {{{1}}}
         task_type: task type
         chassisip: chassis ip
         task_list: list of tasks to run
+        db_dir: db directory
     """
 
     if args.config:
@@ -91,6 +92,13 @@ def argsparsing(args):  # {{{1}}}
         print (f"get task_list_with_tags from config file...")
         #pp (task_list_with_tags)
 
+    if args.db_dir:
+        db_dir = args.db_dir
+        print (f"get db_dir: {db_dir} from CLI...")
+    else:
+        db_dir = stcconf['stcinfo'].get('db_dir')
+        print (f"get db_dir: {db_dir} from config file...")
+
     # evaluate the final task_list based on task_run_by {{{2}}}
 
     # if task_run_by not defined or not supported, run single task
@@ -137,5 +145,5 @@ def argsparsing(args):  # {{{1}}}
         exit()
     else:
         # pp(task_list)
-        return task_type, chassisip, task_list
+        return task_type, chassisip, task_list, db_dir
 

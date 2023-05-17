@@ -24,7 +24,7 @@ class Stctest:  #{{{1}}}
     # "project1" will be a constant used in all methods and all instances
     # so make it a class variable
     STCPROJECT = "project1"
-
+    # stcInstallDir="/opt/stc/Spirent_TestCenter_5.17/Spirent_TestCenter_Application_Linux/"
     # "stc" will be initialized only once, so make it a class variable
     stc = None
 

@@ -1,11 +1,10 @@
 #TODO {{{1}}}
-# - [ ] git/github version control
+# - [ ] post to portal
 # - [ ] k8s client operation
 # - [ ] add jenkins
 # - [ ] add email notification
 # - [ ] add object chaining, method returning another object
 # - [ ] add result validation
-# - [ ] post to portal
 # - [ ] change to pytest
 # - [ ] save results to DB during test
 # - [ ] add documentation
@@ -17,6 +16,7 @@
 # - [x] change to class/oob
 # - [x] support "tag" in yaml config
 # - [x] add argparse
+# - [x] git/github version control
 
 # imports {{{1}}}
 import os
@@ -60,6 +60,8 @@ parser.add_argument('--stcports', '-p', help='STC ports, e.g. "1/1 1/2"')
 parser.add_argument('--xmlconfname', '-x', help='STC xml config file name')
 parser.add_argument('--task_type', '-T', default='full', help='task type',
                     choices=['tester', 'dbread', 'full'])
+
+parser.add_argument('--db_dir', '-d', help='db directory')
 parser.add_argument('--task_run_by', '-t', help='task run by',
                     choices=['task_list', 'task_tags', 'all', 'single'])
 
@@ -83,7 +85,7 @@ pp(args)
 
 # get the final params {{{1}}}
 # after evaluating the params from CLI and yaml config
-task_type, chassisip, task_list = argsparsing(args)
+task_type, chassisip, task_list, db_dir = argsparsing(args)
 print (f"\n=== evaluated tasks to run:\n")
 print (f"task_type: {task_type}")
 print (f"chassisip: {chassisip}")
@@ -111,18 +113,18 @@ if task_type in ["tester", "full"]:
 
 if task_type in ["dbread", "full"]:
     # if task_type is "dbread", get best results from testrunfolder {{{1}}}
-    print (f"\n== task_type: {task_type}: parsing data from testrunfolder...")
-    if not testrunfolder:
+    print (f"\n== task_type: {task_type}: parsing data from db_dir...")
+    if not db_dir:
         # get the last testrunfolder
-        testrunfolder = max(
+        db_dir = max(
             os.path.join("Results", d) for d in os.listdir("Results") 
                 if os.path.isdir(os.path.join("Results", d))
         )
     bs1 = Bestresult()
-    best_result_dicts = bs1.get_best_result_from_folder(testrunfolder)
+    best_result_dicts = bs1.get_best_result_from_folder(db_dir)
 
     # write best results yaml into testrunfolder {{{2}}}
     print ("\n== generating best results yaml into testrunfolder...")
-    bs1.generate_yaml(release="R23.2", yaml_dir=testrunfolder)
+    bs1.generate_yaml(release="R23.2", yaml_dir=db_dir)
 
 print ("all done!")

@@ -3820,3 +3820,2180 @@ run tasks from "task_list" and/or "task_list_with_tags"
 task_type: task_list
 chassisip: 10.204.216.89
 task_list: [[{'xmlconfname': 'JCNR_L2_Perf_1.xml', 'stcports': '1/1 1/2'}, {'xmlconfname': 'JCNR_L2_Perf_2.xml', 'stcports': '1/3 1/4'}]]
+
+
+= stctests.py: 20230516_214719
+Namespace(chassisip='10.204.216.89', config='stctests.yaml', db_dir='Results', stcports=None, task_list=None, task_list_with_tags=None, task_run_by=
+None, task_tag_selector='v710', task_type='dbread', xmlconfname=None)
+get configfile: stctests.yaml from CLI...
+
+== loading config file: stctests.yaml ...
+get chassisip: 10.204.216.89 from CLI...
+get stcports: 12/2 12/8 from config file...
+get xmlconfname: stc-working-configs/JCNR_L2_Perf_IPv4-p1p3.tcc.xml from config file...
+get task_type: dbread from CLI...
+get task_run_by: task_list from config file...
+get task_tag_selector: v710 from CLI...
+get task_list from config file...
+get task_list_with_tags from config file...
+get db_dir: Results from CLI...
+
+determine what to run based on task_run_by...
+task_run_by set to task_list.
+run tasks from "task_list" and/or "task_list_with_tags"
+
+=== evaluated tasks to run:
+
+task_type: dbread
+chassisip: 10.204.216.89
+task_list:
+[{'stcports': '12/2 12/7',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml'},
+ {'stcports': '12/2 12/7',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv4.xml'},
+ {'stcports': '12/2 12/7',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml'},
+ {'stcports': '12/2 12/7',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv6.xml'},
+ {'stcports': '12/7 12/8',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml'},
+ {'stcports': '12/7 12/8',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv4.xml'},
+ {'stcports': '12/7 12/8',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml'},
+ {'stcports': '12/7 12/8',
+  'xmlconfname': 'stc-working-configs/JCNR_L2_Perf_np_IPv6.xml'}]
+
+== task_type: dbread: parsing data from db_dir...
+find all db files from Results...
+get best result from all db files...
+Results/testrun_20230506_135403/JCNR_L2_Perf_IPv4-p1p3-imix.tcc_2023-05-06_13-54-50/2544-Tput_2023-05-06_13-56-54/2544-Tput-Summary-1_2023-05-06_13-
+56-54.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/testrun_20230510_104920/JCNR_L2_Perf_IPv6-p1p3.tcc_2023-05-10_10-09-19/2544-Tput_2023-05-10_10-11-16/2544-Tput-Summary-2_2023-05-10_10-11-16
+.db
+Results/testrun_20230510_104920/JCNR_L2_Perf_IPv6-p1p3-imix.tcc_2023-05-10_08-15-35/2544-Tput_2023-05-10_08-17-38/2544-Tput-Summary-1_2023-05-10_08-
+17-38.db
+Results/testrun_20230514_110434/JCNR_L2_Perf_np_IPv4-imix_2023-05-14_11-05-08/2544-Tput_2023-05-14_11-07-04/2544-Tput-Summary-1_2023-05-14_11-07-04.
+db
+Results/testrun_20230506_214243/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_21-43-22/2544-Tput_2023-05-06_21-44-50/2544-Tput-Summary-1_2023-05-06_21-
+44-50.db
+Results/testrun_20230514_194215/JCNR_L2_Perf_np_IPv4-imix_2023-05-14_19-43-05/2544-Tput_2023-05-14_19-45-02/2544-Tput-Summary-1_2023-05-14_19-45-02.
+db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv4-p3p5.tcc_2023-05-06_15-58-04/2544-Tput_2023-05-06_15-59-31/2544-Tput-Summary-1_2023-05-06_15-59-31
+.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv6-p1p3.tcc_2023-05-06_15-07-32/2544-Tput_2023-05-06_15-09-36/2544-Tput-Summary-1_2023-05-06_15-09-36
+.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv6-p1p3-imix.tcc_2023-05-06_14-54-25/2544-Tput_2023-05-06_14-56-29/2544-Tput-Summary-1_2023-05-06_14-
+56-29.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_15-45-40/2544-Tput_2023-05-06_15-47-07/2544-Tput-Summary-1_2023-05-06_15-
+47-07.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv6-p3p5.tcc_2023-05-06_16-45-26/2544-Tput_2023-05-06_16-46-54/2544-Tput-Summary-1_2023-05-06_16-46-54
+.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv6-p3p5-imix.tcc_2023-05-06_16-33-00/2544-Tput_2023-05-06_16-34-28/2544-Tput-Summary-1_2023-05-06_16-
+34-28.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv4-p1p3-imix.tcc_2023-05-06_14-03-03/2544-Tput_2023-05-06_14-05-06/2544-Tput-Summary-1_2023-05-06_14-
+05-06.db
+Results/testrun_20230506_140149/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-06_14-16-11/2544-Tput_2023-05-06_14-18-14/2544-Tput-Summary-1_2023-05-06_14-18-14
+.db
+Results/testrun_20230506_130046/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_13-01-34/2544-Tput_2023-05-06_13-03-03/2544-Tput-Summary-1_2023-05-06_13-
+03-03.db
+Results/testrun_20230506_130046/JCNR_L2_Perf_IPv6-p3p5-imix.tcc_2023-05-06_13-14-07/2544-Tput_2023-05-06_13-15-36/2544-Tput-Summary-1_2023-05-06_13-
+15-36.db
+Results/0505run_1/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-05_14-16-33/2544-Tput_2023-05-05_14-18-37/2544-Tput-Summary-1_2023-05-05_14-18-37.db
+Results/0505run_1/JCNR_L2_Perf_IPv6-p1p3.tcc_2023-05-05_18-53-16/2544-Tput_2023-05-05_18-55-19/2544-Tput-Summary-1_2023-05-05_18-55-19.db
+Results/0505run_1/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-05_15-15-55/EotResultDb_2023-05-05_15-16-03.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/0505run_1/JCNR_L2_Perf_IPv6-p1p3-imix.tcc_2023-05-05_18-36-45/2544-Tput_2023-05-05_18-38-48/2544-Tput-Summary-1_2023-05-05_18-38-48.db
+Results/0505run_1/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-05_15-22-11/2544-Tput_2023-05-05_15-24-15/2544-Tput-Summary-1_2023-05-05_15-24-15.db
+Results/testrun_20230512_204927/JCNR_L2_Perf_np_IPv4-imix_2023-05-12_20-50-00/2544-Tput_2023-05-12_20-51-56/2544-Tput-Summary-1_2023-05-12_20-51-56.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6-imix_2023-05-12_01-25-49/2544-Tput_2023-05-12_01-27-52/2544-Tput-Summary-8_2023-05-12_01-27-52.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4_2023-05-11_19-09-16/2544-Tput_2023-05-11_19-10-44/2544-Tput-Summary-1_2023-05-11_19-10-44.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4_2023-05-11_23-17-59/2544-Tput_2023-05-11_23-19-28/2544-Tput-Summary-5_2023-05-11_23-19-28.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6_2023-05-12_00-16-44/2544-Tput_2023-05-12_00-18-15/2544-Tput-Summary-7_2023-05-12_00-18-15.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6_2023-05-11_20-07-45/2544-Tput_2023-05-11_20-09-13/2544-Tput-Summary-3_2023-05-11_20-09-13.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4-imix_2023-05-11_23-52-34/2544-Tput_2023-05-11_23-54-38/2544-Tput-Summary-6_2023-05-11_23-54-38.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4-imix_2023-05-11_19-44-18/2544-Tput_2023-05-11_19-46-15/2544-Tput-Summary-2_2023-05-11_19-46-15.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6-imix_2023-05-11_20-42-47/2544-Tput_2023-05-11_20-44-44/2544-Tput-Summary-4_2023-05-11_20-44-44.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4-imix_2023-05-11_21-56-11/2544-Tput_2023-05-11_21-58-08/2544-Tput-Summary-2_2023-05-11_21-58-08.
+db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4_2023-05-11_21-21-10/2544-Tput_2023-05-11_21-22-37/2544-Tput-Summary-1_2023-05-11_21-22-37.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6_2023-05-11_22-19-39/2544-Tput_2023-05-11_22-21-06/2544-Tput-Summary-3_2023-05-11_22-21-06.db
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv4_2023-05-11_21-06-17/2544-Tput_2023-05-11_21-07-46/2544-Tput-Summary-5_2023-05-11_21-07-46.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/testrun_20230511_212034/JCNR_L2_Perf_np_IPv6-imix_2023-05-11_22-54-40/2544-Tput_2023-05-11_22-56-37/2544-Tput-Summary-4_2023-05-11_22-56-37.
+db
+Results/testrun_20230506_111328/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_11-14-13/2544-Tput_2023-05-06_11-15-42/2544-Tput-Summary-1_2023-05-06_11-
+15-42.db
+Results/testrun_20230506_111328/JCNR_L2_Perf_IPv6-p3p5-imix.tcc_2023-05-06_11-26-46/2544-Tput_2023-05-06_11-28-15/2544-Tput-Summary-1_2023-05-06_11-
+28-15.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-06_22-26-26/2544-Tput_2023-05-06_22-28-29/2544-Tput-Summary-1_2023-05-06_22-28-29
+.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv6-p3p5-imix.tcc_2023-05-07_00-54-41/2544-Tput_2023-05-07_00-56-38/2544-Tput-Summary-1_2023-05-07_00-
+56-38.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv6-p3p5.tcc_2023-05-07_01-18-10/2544-Tput_2023-05-07_01-19-38/2544-Tput-Summary-1_2023-05-07_01-19-38
+.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_23-56-13/2544-Tput_2023-05-06_23-58-09/2544-Tput-Summary-1_2023-05-06_23-
+58-09.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv6-p1p3.tcc_2023-05-06_23-18-01/2544-Tput_2023-05-06_23-20-04/2544-Tput-Summary-1_2023-05-06_23-20-04
+.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv4-p1p3-imix.tcc_2023-05-06_22-13-13/2544-Tput_2023-05-06_22-15-16/2544-Tput-Summary-1_2023-05-06_22-
+15-16.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv6-p1p3-imix.tcc_2023-05-06_23-04-46/2544-Tput_2023-05-06_23-06-51/2544-Tput-Summary-1_2023-05-06_23-
+06-51.db
+Results/testrun_20230506_221226/JCNR_L2_Perf_IPv4-p3p5.tcc_2023-05-07_00-19-40/2544-Tput_2023-05-07_00-21-08/2544-Tput-Summary-1_2023-05-07_00-21-08
+.db
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Trial-1-FrameDist-Default-Iter-3-Load-13.250000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Trial-1-FrameDist-Default-Iter-5-Load-4.062500.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Trial-1-FrameDist-Default-Iter-2-Load-25.500000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Summary-2_2023-05-05_09-45-50.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Trial-1-FrameDist-Default-Iter-1-Load-50.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-43-54/2544-Tput_2023-05-05_09-45-50/2544-Tput-Trial-1-FrameDist-Default-Iter-4-Load-7.125000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-3-Load-13.250000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-5-Load-4.062500.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Summary-1_2023-05-05_07-24-54.db
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-2-Load-25.500000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-1-Load-50.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-6-Load-2.531250.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-4-Load-7.125000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-8-Load-1.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_07-22-57/2544-Tput_2023-05-05_07-24-54/2544-Tput-Trial-1-FrameDist-Default-Iter-7-Load-1.765625.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-5-Load-34.687500.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-4-Load-31.625000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-6-Load-36.218750.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-2-Load-25.500000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-3-Load-37.750000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-1-Load-50.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Summary-1_2023-05-05_09-59-05.db
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-57-08/2544-Tput_2023-05-05_09-59-05/2544-Tput-Trial-1-FrameDist-Default-Iter-7-Load-36.984375.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-3-Load-13.250000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-5-Load-4.062500.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-2-Load-25.500000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-1-Load-50.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Summary-1_2023-05-05_09-12-03.db
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-6-Load-2.531250.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-4-Load-7.125000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-8-Load-1.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_09-10-06/2544-Tput_2023-05-05_09-12-03/2544-Tput-Trial-1-FrameDist-Default-Iter-7-Load-1.765625.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-5-Load-34.687500.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-4-Load-31.625000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Summary-1_2023-05-05_08-16-34.db
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-6-Load-36.218750.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-2-Load-25.500000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-3-Load-37.750000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-1-Load-50.000000.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/oldruns/ipv6_rfc2544_p2p8_2023-05-05_08-14-37/2544-Tput_2023-05-05_08-16-34/2544-Tput-Trial-1-FrameDist-Default-Iter-7-Load-36.984375.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/testrun_20230515_154603/JCNR_L2_Perf_np_IPv4-imix_2023-05-15_15-46-39/2544-Tput_2023-05-15_15-48-35/2544-Tput-Summary-1_2023-05-15_15-48-35.
+db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv6_2023-05-13_01-07-23/2544-Tput_2023-05-13_01-08-52/2544-Tput-Summary-8_2023-05-13_01-08-52.db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv4-imix_2023-05-12_23-44-46/2544-Tput_2023-05-12_23-46-49/2544-Tput-Summary-5_2023-05-12_23-46-49.
+db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv4-imix_2023-05-12_21-47-50/2544-Tput_2023-05-12_21-49-47/2544-Tput-Summary-1_2023-05-12_21-49-47.
+db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv6-imix_2023-05-12_22-46-18/2544-Tput_2023-05-12_22-48-14/2544-Tput-Summary-3_2023-05-12_22-48-14.
+db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv4_2023-05-12_22-11-16/2544-Tput_2023-05-12_22-12-44/2544-Tput-Summary-2_2023-05-12_22-12-44.db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv6-imix_2023-05-13_00-43-18/2544-Tput_2023-05-13_00-45-22/2544-Tput-Summary-7_2023-05-13_00-45-22.
+db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv4_2023-05-13_00-08-50/2544-Tput_2023-05-13_00-10-20/2544-Tput-Summary-6_2023-05-13_00-10-20.db
+Results/testrun_20230512_214717/JCNR_L2_Perf_np_IPv6_2023-05-12_23-09-42/2544-Tput_2023-05-12_23-11-10/2544-Tput-Summary-4_2023-05-12_23-11-10.db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv6-imix_2023-05-11_11-35-49/2544-Tput_2023-05-11_11-37-52/2544-Tput-Summary-4_2023-05-11_11-37-52.
+db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv6_2023-05-10_21-34-52/2544-Tput_2023-05-10_21-36-18/2544-Tput-Summary-2_2023-05-10_21-36-18.db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv4-imix_2023-05-10_21-32-01/EotResultDb_2023-05-10_21-33-18.db
+Rfc2544ThroughputPerFrameSizeResult not exists, skip this db!
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv4_2023-05-11_09-59-19/2544-Tput_2023-05-11_10-00-48/2544-Tput-Summary-1_2023-05-11_10-00-48.db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv6_2023-05-11_10-59-39/2544-Tput_2023-05-11_11-01-09/2544-Tput-Summary-3_2023-05-11_11-01-09.db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv4-imix_2023-05-11_10-35-31/2544-Tput_2023-05-11_10-37-35/2544-Tput-Summary-2_2023-05-11_10-37-35.
+db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv4_2023-05-10_20-33-41/2544-Tput_2023-05-10_20-35-10/2544-Tput-Summary-1_2023-05-10_20-35-10.db
+Results/testrun_20230511_095855/JCNR_L2_Perf_np_IPv4_2023-05-10_20-56-27/2544-Tput_2023-05-10_20-57-57/2544-Tput-Summary-1_2023-05-10_20-57-57.db
+Results/testrun_20230506_212245/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_21-23-24/2544-Tput_2023-05-06_21-24-51/2544-Tput-Summary-1_2023-05-06_21-
+24-51.db
+Results/testrun_20230506_202722/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_20-28-02/2544-Tput_2023-05-06_20-29-29/2544-Tput-Summary-1_2023-05-06_20-
+29-29.db
+Results/testrun_20230506_202722/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-06_19-49-06/2544-Tput_2023-05-06_19-50-34/2544-Tput-Summary-1_2023-05-06_19-
+50-34.db
+Results/0505run_2/JCNR_L2_Perf_IPv4-p1p3-imix.tcc_2023-05-05_21-39-31/2544-Tput_2023-05-05_21-41-34/2544-Tput-Summary-1_2023-05-05_21-41-34.db
+Results/0505run_2/JCNR_L2_Perf_IPv6-p1p3-imix.tcc_2023-05-05_22-30-54/2544-Tput_2023-05-05_22-32-58/2544-Tput-Summary-1_2023-05-05_22-32-58.db
+Results/0505run_2/JCNR_L2_Perf_IPv6-p3p5-imix.tcc_2023-05-06_00-12-30/2544-Tput_2023-05-06_00-13-59/2544-Tput-Summary-1_2023-05-06_00-13-59.db
+Results/0505run_2/JCNR_L2_Perf_IPv4-p3p5.tcc_2023-05-05_23-59-56/2544-Tput_2023-05-06_00-01-25/2544-Tput-Summary-1_2023-05-06_00-01-25.db
+Results/0505run_2/JCNR_L2_Perf_IPv6-p3p5.tcc_2023-05-06_00-25-03/2544-Tput_2023-05-06_00-26-32/2544-Tput-Summary-1_2023-05-06_00-26-32.db
+Results/0505run_2/JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-05_21-52-39/2544-Tput_2023-05-05_21-54-43/2544-Tput-Summary-1_2023-05-05_21-54-43.db
+Results/0505run_2/JCNR_L2_Perf_IPv6-p1p3.tcc_2023-05-05_22-44-02/2544-Tput_2023-05-05_22-46-05/2544-Tput-Summary-1_2023-05-05_22-46-05.db
+Results/0505run_2/JCNR_L2_Perf_IPv4-p3p5-imix.tcc_2023-05-05_23-22-15/2544-Tput_2023-05-05_23-23-45/2544-Tput-Summary-1_2023-05-05_23-23-45.db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv4-imix_2023-05-13_17-26-19/2544-Tput_2023-05-13_17-28-15/2544-Tput-Summary-1_2023-05-13_17-28-15.
+db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv6-imix_2023-05-13_18-24-45/2544-Tput_2023-05-13_18-26-43/2544-Tput-Summary-3_2023-05-13_18-26-43.
+db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv6-imix_2023-05-13_21-20-13/2544-Tput_2023-05-13_21-22-09/2544-Tput-Summary-9_2023-05-13_21-22-09.
+db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv6_2023-05-13_20-45-51/2544-Tput_2023-05-13_20-47-20/2544-Tput-Summary-8_2023-05-13_20-47-20.db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv6-imix_2023-05-13_20-21-49/2544-Tput_2023-05-13_20-23-51/2544-Tput-Summary-7_2023-05-13_20-23-51.
+db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv6_2023-05-13_18-48-11/2544-Tput_2023-05-13_18-49-38/2544-Tput-Summary-4_2023-05-13_18-49-38.db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv4-imix_2023-05-13_19-23-17/2544-Tput_2023-05-13_19-25-20/2544-Tput-Summary-5_2023-05-13_19-25-20.
+db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv4_2023-05-13_19-47-20/2544-Tput_2023-05-13_19-48-49/2544-Tput-Summary-6_2023-05-13_19-48-49.db
+Results/testrun_20230513_172546/JCNR_L2_Perf_np_IPv4_2023-05-13_17-49-45/2544-Tput_2023-05-13_17-51-13/2544-Tput-Summary-2_2023-05-13_17-51-13.db
+best result:
+{'1box_e810_ipv4': {'148bytes': {'avg_jitter_ns': 234.0,
+                                 'avg_latency_ns': 22692.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000861348576936855,
+                                 'max_jitter_ns': 24160.0,
+                                 'max_latency_ns': 547720.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 5350.0,
+                                 'passed': True,
+                                 'thput_gbps': 16.961,
+                                 'thput_mpps': 12.6197457},
+                    '1518bytes': {'avg_jitter_ns': 344.0,
+                                  'avg_latency_ns': 125238.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000777202663300861,
+                                  'max_jitter_ns': 6730.0,
+                                  'max_latency_ns': 556240.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 7100.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 7.0,
+                                 'avg_latency_ns': 27139.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000504160619110384,
+                                 'max_jitter_ns': 12510.0,
+                                 'max_latency_ns': 582850.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 6460.0,
+                                 'passed': True,
+                                 'thput_gbps': 49.6095,
+                                 'thput_mpps': 11.656338167},
+                    'imix': {'avg_jitter_ns': 64.0,
+                             'avg_latency_ns': 24218.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000735177515999603,
+                             'max_jitter_ns': 18140.0,
+                             'max_latency_ns': 545040.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 5320.0,
+                             'passed': True,
+                             'thput_gbps': 42.1875,
+                             'thput_mpps': 11.842944699999999}},
+ '1box_e810_ipv6': {'148bytes': {'avg_jitter_ns': 227.0,
+                                 'avg_latency_ns': 21241.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000540290864603051,
+                                 'max_jitter_ns': 21670.0,
+                                 'max_latency_ns': 495830.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 6270.0,
+                                 'passed': True,
+                                 'thput_gbps': 16.961,
+                                 'thput_mpps': 12.619745732999998},
+                    '1518bytes': {'avg_jitter_ns': 288.0,
+                                  'avg_latency_ns': 166506.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000597154130747258,
+                                  'max_jitter_ns': 1970.0,
+                                  'max_latency_ns': 202960.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 10330.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 11.0,
+                                 'avg_latency_ns': 25809.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000446252211214738,
+                                 'max_jitter_ns': 10080.0,
+                                 'max_latency_ns': 547970.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 8280.0,
+                                 'passed': True,
+                                 'thput_gbps': 49.6095,
+                                 'thput_mpps': 11.656338133},
+                    'imix': {'avg_jitter_ns': 54.0,
+                             'avg_latency_ns': 25386.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000992679288121741,
+                             'max_jitter_ns': 16320.0,
+                             'max_latency_ns': 204970.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 6580.0,
+                             'passed': True,
+                             'thput_gbps': 43.75,
+                             'thput_mpps': 12.28157655}},
+ '1box_v710_ipv4': {'148bytes': {'avg_jitter_ns': 854.0,
+                                 'avg_latency_ns': 15083.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000618012295796062,
+                                 'max_jitter_ns': 428330.0,
+                                 'max_latency_ns': 437650.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 5980.0,
+                                 'passed': True,
+                                 'thput_gbps': 10.453,
+                                 'thput_mpps': 7.777623033},
+                    '1518bytes': {'avg_jitter_ns': 724.0,
+                                  'avg_latency_ns': 63578.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000342871465181805,
+                                  'max_jitter_ns': 322980.0,
+                                  'max_latency_ns': 429370.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 8740.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 628.0,
+                                 'avg_latency_ns': 17543.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.0005432725262046,
+                                 'max_jitter_ns': 450290.0,
+                                 'max_latency_ns': 463090.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 7090.0,
+                                 'passed': True,
+                                 'thput_gbps': 33.203,
+                                 'thput_mpps': 7.8014866},
+                    'imix': {'avg_jitter_ns': 759.0,
+                             'avg_latency_ns': 15231.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000591332524289114,
+                             'max_jitter_ns': 440010.0,
+                             'max_latency_ns': 448570.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 6010.0,
+                             'passed': True,
+                             'thput_gbps': 25.0,
+                             'thput_mpps': 7.018047933}},
+ '1box_v710_ipv6': {'148bytes': {'avg_jitter_ns': 822.0,
+                                 'avg_latency_ns': 16378.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000579848250343357,
+                                 'max_jitter_ns': 436760.0,
+                                 'max_latency_ns': 443800.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 5890.0,
+                                 'passed': True,
+                                 'thput_gbps': 10.836000000000002,
+                                 'thput_mpps': 8.062454267},
+                    '1518bytes': {'avg_jitter_ns': 720.0,
+                                  'avg_latency_ns': 57664.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000299397332036743,
+                                  'max_jitter_ns': 270250.0,
+                                  'max_latency_ns': 373690.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 9230.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 596.0,
+                                 'avg_latency_ns': 18389.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000713976204716606,
+                                 'max_jitter_ns': 393560.0,
+                                 'max_latency_ns': 402270.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 7150.0,
+                                 'passed': True,
+                                 'thput_gbps': 34.375,
+                                 'thput_mpps': 8.076833133000001},
+                    'imix': {'avg_jitter_ns': 730.0,
+                             'avg_latency_ns': 15156.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.00064641269395173,
+                             'max_jitter_ns': 400580.0,
+                             'max_latency_ns': 407810.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 5850.0,
+                             'passed': True,
+                             'thput_gbps': 25.7815,
+                             'thput_mpps': 7.2373785}},
+ '2box_e810_ipv4': {'148bytes': {'avg_jitter_ns': 326.0,
+                                 'avg_latency_ns': 36073.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000931648996268501,
+                                 'max_jitter_ns': 30860.0,
+                                 'max_latency_ns': 607050.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 13190.0,
+                                 'passed': True,
+                                 'thput_gbps': 14.663999999999998,
+                                 'thput_mpps': 10.9107615},
+                    '1518bytes': {'avg_jitter_ns': 471.0,
+                                  'avg_latency_ns': 223090.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000968324795806508,
+                                  'max_jitter_ns': 7400.0,
+                                  'max_latency_ns': 730830.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 16300.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 43.0,
+                                 'avg_latency_ns': 50047.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000665488543238475,
+                                 'max_jitter_ns': 12410.0,
+                                 'max_latency_ns': 244760.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 20220.0,
+                                 'passed': True,
+                                 'thput_gbps': 48.828,
+                                 'thput_mpps': 11.472774517000001},
+                    'imix': {'avg_jitter_ns': 117.0,
+                             'avg_latency_ns': 44015.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000956041452431526,
+                             'max_jitter_ns': 21560.0,
+                             'max_latency_ns': 555100.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 15840.0,
+                             'passed': True,
+                             'thput_gbps': 39.844,
+                             'thput_mpps': 11.185010132999999}},
+ '2box_e810_ipv6': {'148bytes': {'avg_jitter_ns': 476.0,
+                                 'avg_latency_ns': 38179.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000921782111629171,
+                                 'max_jitter_ns': 27210.0,
+                                 'max_latency_ns': 566740.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 12460.0,
+                                 'passed': True,
+                                 'thput_gbps': 15.8125,
+                                 'thput_mpps': 11.765253267},
+                    '1518bytes': {'avg_jitter_ns': 510.0,
+                                  'avg_latency_ns': 220969.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000857588796286069,
+                                  'max_jitter_ns': 4930.0,
+                                  'max_latency_ns': 773740.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 19780.0,
+                                  'passed': True,
+                                  'thput_gbps': 50.0,
+                                  'thput_mpps': 4.063719133},
+                    '512bytes': {'avg_jitter_ns': 45.0,
+                                 'avg_latency_ns': 50880.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000841363860502639,
+                                 'max_jitter_ns': 11720.0,
+                                 'max_latency_ns': 591090.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 19680.0,
+                                 'passed': True,
+                                 'thput_gbps': 49.21900000000001,
+                                 'thput_mpps': 11.564556617000001},
+                    'imix': {'avg_jitter_ns': 135.0,
+                             'avg_latency_ns': 45907.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000966563141125052,
+                             'max_jitter_ns': 21580.0,
+                             'max_latency_ns': 570840.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 15770.0,
+                             'passed': True,
+                             'thput_gbps': 41.40650000000001,
+                             'thput_mpps': 11.623658633}},
+ '2box_v710_ipv4': {'148bytes': {'avg_jitter_ns': 874.0,
+                                 'avg_latency_ns': 21868.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000354785388472294,
+                                 'max_jitter_ns': 383670.0,
+                                 'max_latency_ns': 409090.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 14060.0,
+                                 'passed': True,
+                                 'thput_gbps': 10.0705,
+                                 'thput_mpps': 7.4927926},
+                    '1518bytes': {'avg_jitter_ns': 870.0,
+                                  'avg_latency_ns': 28371.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000374573635174984,
+                                  'max_jitter_ns': 440430.0,
+                                  'max_latency_ns': 463950.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 18610.0,
+                                  'passed': True,
+                                  'thput_gbps': 43.3595,
+                                  'thput_mpps': 3.5240067},
+                    '512bytes': {'avg_jitter_ns': 627.0,
+                                 'avg_latency_ns': 26640.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000683257189719816,
+                                 'max_jitter_ns': 434360.0,
+                                 'max_latency_ns': 482550.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 16750.0,
+                                 'passed': True,
+                                 'thput_gbps': 32.422,
+                                 'thput_mpps': 7.617922033},
+                    'imix': {'avg_jitter_ns': 799.0,
+                             'avg_latency_ns': 24361.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000971181603846185,
+                             'max_jitter_ns': 388020.0,
+                             'max_latency_ns': 422260.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 14060.0,
+                             'passed': True,
+                             'thput_gbps': 23.469,
+                             'thput_mpps': 6.588194533}},
+ '2box_v710_ipv6': {'148bytes': {'avg_jitter_ns': 827.0,
+                                 'avg_latency_ns': 27412.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000528581809671288,
+                                 'max_jitter_ns': 396850.0,
+                                 'max_latency_ns': 427860.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 14030.0,
+                                 'passed': True,
+                                 'thput_gbps': 10.836000000000002,
+                                 'thput_mpps': 8.062454267},
+                    '1518bytes': {'avg_jitter_ns': 887.0,
+                                  'avg_latency_ns': 28384.0,
+                                  'comment': '',
+                                  'env': '',
+                                  'frame_loss_perc': 0.000152761722426161,
+                                  'max_jitter_ns': 371470.0,
+                                  'max_latency_ns': 401070.0,
+                                  'metadata': {},
+                                  'min_jitter_ns': 0.0,
+                                  'min_latency_ns': 18850.0,
+                                  'passed': True,
+                                  'thput_gbps': 43.3595,
+                                  'thput_mpps': 3.5240067},
+                    '512bytes': {'avg_jitter_ns': 594.0,
+                                 'avg_latency_ns': 32828.0,
+                                 'comment': '',
+                                 'env': '',
+                                 'frame_loss_perc': 0.000553434734407496,
+                                 'max_jitter_ns': 374290.0,
+                                 'max_latency_ns': 427210.0,
+                                 'metadata': {},
+                                 'min_jitter_ns': 0.0,
+                                 'min_latency_ns': 18180.0,
+                                 'passed': True,
+                                 'thput_gbps': 34.375,
+                                 'thput_mpps': 8.076833133000001},
+                    'imix': {'avg_jitter_ns': 596.0,
+                             'avg_latency_ns': 34646.0,
+                             'comment': '',
+                             'env': '',
+                             'frame_loss_perc': 0.000982202801065529,
+                             'max_jitter_ns': 416310.0,
+                             'max_latency_ns': 445910.0,
+                             'metadata': {},
+                             'min_jitter_ns': 0.0,
+                             'min_latency_ns': 16710.0,
+                             'passed': True,
+                             'thput_gbps': 30.077999999999996,
+                             'thput_mpps': 8.443605867}}}
+
+== generating best results yaml into testrunfolder...
+
+generating yaml with all platforms: Results/best_result_R23.2_all.yaml...
+
+1box_e810_ipv4:
+  148bytes:
+    avg_jitter_ns: 234.0
+    avg_latency_ns: 22692.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000861348576936855
+    max_jitter_ns: 24160.0
+    max_latency_ns: 547720.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5350.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.6197457
+  1518bytes:
+    avg_jitter_ns: 344.0
+    avg_latency_ns: 125238.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000777202663300861
+    max_jitter_ns: 6730.0
+    max_latency_ns: 556240.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7100.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 7.0
+    avg_latency_ns: 27139.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000504160619110384
+    max_jitter_ns: 12510.0
+    max_latency_ns: 582850.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6460.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338167
+  imix:
+    avg_jitter_ns: 64.0
+    avg_latency_ns: 24218.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000735177515999603
+    max_jitter_ns: 18140.0
+    max_latency_ns: 545040.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5320.0
+    passed: true
+    thput_gbps: 42.1875
+    thput_mpps: 11.842944699999999
+1box_e810_ipv6:
+  148bytes:
+    avg_jitter_ns: 227.0
+    avg_latency_ns: 21241.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000540290864603051
+    max_jitter_ns: 21670.0
+    max_latency_ns: 495830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6270.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.619745732999998
+  1518bytes:
+    avg_jitter_ns: 288.0
+    avg_latency_ns: 166506.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000597154130747258
+    max_jitter_ns: 1970.0
+    max_latency_ns: 202960.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 10330.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 11.0
+    avg_latency_ns: 25809.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000446252211214738
+    max_jitter_ns: 10080.0
+    max_latency_ns: 547970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8280.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338133
+  imix:
+    avg_jitter_ns: 54.0
+    avg_latency_ns: 25386.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000992679288121741
+    max_jitter_ns: 16320.0
+    max_latency_ns: 204970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6580.0
+    passed: true
+    thput_gbps: 43.75
+    thput_mpps: 12.28157655
+1box_v710_ipv4:
+  148bytes:
+    avg_jitter_ns: 854.0
+    avg_latency_ns: 15083.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000618012295796062
+    max_jitter_ns: 428330.0
+    max_latency_ns: 437650.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5980.0
+    passed: true
+    thput_gbps: 10.453
+    thput_mpps: 7.777623033
+  1518bytes:
+    avg_jitter_ns: 724.0
+    avg_latency_ns: 63578.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000342871465181805
+    max_jitter_ns: 322980.0
+    max_latency_ns: 429370.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8740.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 628.0
+    avg_latency_ns: 17543.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.0005432725262046
+    max_jitter_ns: 450290.0
+    max_latency_ns: 463090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7090.0
+    passed: true
+    thput_gbps: 33.203
+    thput_mpps: 7.8014866
+  imix:
+    avg_jitter_ns: 759.0
+    avg_latency_ns: 15231.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000591332524289114
+    max_jitter_ns: 440010.0
+    max_latency_ns: 448570.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6010.0
+    passed: true
+    thput_gbps: 25.0
+    thput_mpps: 7.018047933
+1box_v710_ipv6:
+  148bytes:
+    avg_jitter_ns: 822.0
+    avg_latency_ns: 16378.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000579848250343357
+    max_jitter_ns: 436760.0
+    max_latency_ns: 443800.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5890.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 720.0
+    avg_latency_ns: 57664.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000299397332036743
+    max_jitter_ns: 270250.0
+    max_latency_ns: 373690.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 9230.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 18389.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000713976204716606
+    max_jitter_ns: 393560.0
+    max_latency_ns: 402270.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7150.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 730.0
+    avg_latency_ns: 15156.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.00064641269395173
+    max_jitter_ns: 400580.0
+    max_latency_ns: 407810.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5850.0
+    passed: true
+    thput_gbps: 25.7815
+    thput_mpps: 7.2373785
+2box_e810_ipv4:
+  148bytes:
+    avg_jitter_ns: 326.0
+    avg_latency_ns: 36073.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000931648996268501
+    max_jitter_ns: 30860.0
+    max_latency_ns: 607050.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 13190.0
+    passed: true
+    thput_gbps: 14.663999999999998
+    thput_mpps: 10.9107615
+  1518bytes:
+    avg_jitter_ns: 471.0
+    avg_latency_ns: 223090.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000968324795806508
+    max_jitter_ns: 7400.0
+    max_latency_ns: 730830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16300.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 43.0
+    avg_latency_ns: 50047.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000665488543238475
+    max_jitter_ns: 12410.0
+    max_latency_ns: 244760.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 20220.0
+    passed: true
+    thput_gbps: 48.828
+    thput_mpps: 11.472774517000001
+  imix:
+    avg_jitter_ns: 117.0
+    avg_latency_ns: 44015.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000956041452431526
+    max_jitter_ns: 21560.0
+    max_latency_ns: 555100.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15840.0
+    passed: true
+    thput_gbps: 39.844
+    thput_mpps: 11.185010132999999
+2box_e810_ipv6:
+  148bytes:
+    avg_jitter_ns: 476.0
+    avg_latency_ns: 38179.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000921782111629171
+    max_jitter_ns: 27210.0
+    max_latency_ns: 566740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 12460.0
+    passed: true
+    thput_gbps: 15.8125
+    thput_mpps: 11.765253267
+  1518bytes:
+    avg_jitter_ns: 510.0
+    avg_latency_ns: 220969.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000857588796286069
+    max_jitter_ns: 4930.0
+    max_latency_ns: 773740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19780.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 45.0
+    avg_latency_ns: 50880.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000841363860502639
+    max_jitter_ns: 11720.0
+    max_latency_ns: 591090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19680.0
+    passed: true
+    thput_gbps: 49.21900000000001
+    thput_mpps: 11.564556617000001
+  imix:
+    avg_jitter_ns: 135.0
+    avg_latency_ns: 45907.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000966563141125052
+    max_jitter_ns: 21580.0
+    max_latency_ns: 570840.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15770.0
+    passed: true
+    thput_gbps: 41.40650000000001
+    thput_mpps: 11.623658633
+2box_v710_ipv4:
+  148bytes:
+    avg_jitter_ns: 874.0
+    avg_latency_ns: 21868.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000354785388472294
+    max_jitter_ns: 383670.0
+    max_latency_ns: 409090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 10.0705
+    thput_mpps: 7.4927926
+  1518bytes:
+    avg_jitter_ns: 870.0
+    avg_latency_ns: 28371.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000374573635174984
+    max_jitter_ns: 440430.0
+    max_latency_ns: 463950.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18610.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 627.0
+    avg_latency_ns: 26640.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000683257189719816
+    max_jitter_ns: 434360.0
+    max_latency_ns: 482550.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16750.0
+    passed: true
+    thput_gbps: 32.422
+    thput_mpps: 7.617922033
+  imix:
+    avg_jitter_ns: 799.0
+    avg_latency_ns: 24361.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000971181603846185
+    max_jitter_ns: 388020.0
+    max_latency_ns: 422260.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 23.469
+    thput_mpps: 6.588194533
+2box_v710_ipv6:
+  148bytes:
+    avg_jitter_ns: 827.0
+    avg_latency_ns: 27412.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000528581809671288
+    max_jitter_ns: 396850.0
+    max_latency_ns: 427860.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14030.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 887.0
+    avg_latency_ns: 28384.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000152761722426161
+    max_jitter_ns: 371470.0
+    max_latency_ns: 401070.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18850.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 594.0
+    avg_latency_ns: 32828.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000553434734407496
+    max_jitter_ns: 374290.0
+    max_latency_ns: 427210.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18180.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 34646.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000982202801065529
+    max_jitter_ns: 416310.0
+    max_latency_ns: 445910.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16710.0
+    passed: true
+    thput_gbps: 30.077999999999996
+    thput_mpps: 8.443605867
+
+generating best result yaml for 2box_e810_ipv6: Results/best_result_R23.2_2box_e810_ipv6.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 476.0
+    avg_latency_ns: 38179.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000921782111629171
+    max_jitter_ns: 27210.0
+    max_latency_ns: 566740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 12460.0
+    passed: true
+    thput_gbps: 15.8125
+    thput_mpps: 11.765253267
+  1518bytes:
+    avg_jitter_ns: 510.0
+    avg_latency_ns: 220969.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000857588796286069
+    max_jitter_ns: 4930.0
+    max_latency_ns: 773740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19780.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 45.0
+    avg_latency_ns: 50880.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000841363860502639
+    max_jitter_ns: 11720.0
+    max_latency_ns: 591090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19680.0
+    passed: true
+    thput_gbps: 49.21900000000001
+    thput_mpps: 11.564556617000001
+  imix:
+    avg_jitter_ns: 135.0
+    avg_latency_ns: 45907.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000966563141125052
+    max_jitter_ns: 21580.0
+    max_latency_ns: 570840.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15770.0
+    passed: true
+    thput_gbps: 41.40650000000001
+    thput_mpps: 11.623658633
+platform: 2box_e810_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_2box_e810_ipv6_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 476.0
+    avg_latency_ns: 38179.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000921782111629171
+    max_jitter_ns: 27210.0
+    max_latency_ns: 566740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 12460.0
+    passed: true
+    thput_gbps: 15.8125
+    thput_mpps: 11.765253267
+  1518bytes:
+    avg_jitter_ns: 510.0
+    avg_latency_ns: 220969.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000857588796286069
+    max_jitter_ns: 4930.0
+    max_latency_ns: 773740.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19780.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 45.0
+    avg_latency_ns: 50880.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000841363860502639
+    max_jitter_ns: 11720.0
+    max_latency_ns: 591090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 19680.0
+    passed: true
+    thput_gbps: 49.21900000000001
+    thput_mpps: 11.564556617000001
+  imix:
+    avg_jitter_ns: 135.0
+    avg_latency_ns: 45907.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000966563141125052
+    max_jitter_ns: 21580.0
+    max_latency_ns: 570840.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15770.0
+    passed: true
+    thput_gbps: 41.40650000000001
+    thput_mpps: 11.623658633
+platform: 2box_e810_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 1box_e810_ipv6: Results/best_result_R23.2_1box_e810_ipv6.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 227.0
+    avg_latency_ns: 21241.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000540290864603051
+    max_jitter_ns: 21670.0
+    max_latency_ns: 495830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6270.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.619745732999998
+  1518bytes:
+    avg_jitter_ns: 288.0
+    avg_latency_ns: 166506.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000597154130747258
+    max_jitter_ns: 1970.0
+    max_latency_ns: 202960.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 10330.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 11.0
+    avg_latency_ns: 25809.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000446252211214738
+    max_jitter_ns: 10080.0
+    max_latency_ns: 547970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8280.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338133
+  imix:
+    avg_jitter_ns: 54.0
+    avg_latency_ns: 25386.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000992679288121741
+    max_jitter_ns: 16320.0
+    max_latency_ns: 204970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6580.0
+    passed: true
+    thput_gbps: 43.75
+    thput_mpps: 12.28157655
+platform: 1box_e810_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_1box_e810_ipv6_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 227.0
+    avg_latency_ns: 21241.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000540290864603051
+    max_jitter_ns: 21670.0
+    max_latency_ns: 495830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6270.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.619745732999998
+  1518bytes:
+    avg_jitter_ns: 288.0
+    avg_latency_ns: 166506.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000597154130747258
+    max_jitter_ns: 1970.0
+    max_latency_ns: 202960.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 10330.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 11.0
+    avg_latency_ns: 25809.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000446252211214738
+    max_jitter_ns: 10080.0
+    max_latency_ns: 547970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8280.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338133
+  imix:
+    avg_jitter_ns: 54.0
+    avg_latency_ns: 25386.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000992679288121741
+    max_jitter_ns: 16320.0
+    max_latency_ns: 204970.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6580.0
+    passed: true
+    thput_gbps: 43.75
+    thput_mpps: 12.28157655
+platform: 1box_e810_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 1box_v710_ipv4: Results/best_result_R23.2_1box_v710_ipv4.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 854.0
+    avg_latency_ns: 15083.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000618012295796062
+    max_jitter_ns: 428330.0
+    max_latency_ns: 437650.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5980.0
+    passed: true
+    thput_gbps: 10.453
+    thput_mpps: 7.777623033
+  1518bytes:
+    avg_jitter_ns: 724.0
+    avg_latency_ns: 63578.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000342871465181805
+    max_jitter_ns: 322980.0
+    max_latency_ns: 429370.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8740.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 628.0
+    avg_latency_ns: 17543.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.0005432725262046
+    max_jitter_ns: 450290.0
+    max_latency_ns: 463090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7090.0
+    passed: true
+    thput_gbps: 33.203
+    thput_mpps: 7.8014866
+  imix:
+    avg_jitter_ns: 759.0
+    avg_latency_ns: 15231.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000591332524289114
+    max_jitter_ns: 440010.0
+    max_latency_ns: 448570.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6010.0
+    passed: true
+    thput_gbps: 25.0
+    thput_mpps: 7.018047933
+platform: 1box_v710_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_1box_v710_ipv4_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 854.0
+    avg_latency_ns: 15083.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000618012295796062
+    max_jitter_ns: 428330.0
+    max_latency_ns: 437650.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5980.0
+    passed: true
+    thput_gbps: 10.453
+    thput_mpps: 7.777623033
+  1518bytes:
+    avg_jitter_ns: 724.0
+    avg_latency_ns: 63578.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000342871465181805
+    max_jitter_ns: 322980.0
+    max_latency_ns: 429370.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 8740.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 628.0
+    avg_latency_ns: 17543.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.0005432725262046
+    max_jitter_ns: 450290.0
+    max_latency_ns: 463090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7090.0
+    passed: true
+    thput_gbps: 33.203
+    thput_mpps: 7.8014866
+  imix:
+    avg_jitter_ns: 759.0
+    avg_latency_ns: 15231.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000591332524289114
+    max_jitter_ns: 440010.0
+    max_latency_ns: 448570.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6010.0
+    passed: true
+    thput_gbps: 25.0
+    thput_mpps: 7.018047933
+platform: 1box_v710_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 2box_e810_ipv4: Results/best_result_R23.2_2box_e810_ipv4.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 326.0
+    avg_latency_ns: 36073.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000931648996268501
+    max_jitter_ns: 30860.0
+    max_latency_ns: 607050.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 13190.0
+    passed: true
+    thput_gbps: 14.663999999999998
+    thput_mpps: 10.9107615
+  1518bytes:
+    avg_jitter_ns: 471.0
+    avg_latency_ns: 223090.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000968324795806508
+    max_jitter_ns: 7400.0
+    max_latency_ns: 730830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16300.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 43.0
+    avg_latency_ns: 50047.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000665488543238475
+    max_jitter_ns: 12410.0
+    max_latency_ns: 244760.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 20220.0
+    passed: true
+    thput_gbps: 48.828
+    thput_mpps: 11.472774517000001
+  imix:
+    avg_jitter_ns: 117.0
+    avg_latency_ns: 44015.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000956041452431526
+    max_jitter_ns: 21560.0
+    max_latency_ns: 555100.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15840.0
+    passed: true
+    thput_gbps: 39.844
+    thput_mpps: 11.185010132999999
+platform: 2box_e810_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_2box_e810_ipv4_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 326.0
+    avg_latency_ns: 36073.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000931648996268501
+    max_jitter_ns: 30860.0
+    max_latency_ns: 607050.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 13190.0
+    passed: true
+    thput_gbps: 14.663999999999998
+    thput_mpps: 10.9107615
+  1518bytes:
+    avg_jitter_ns: 471.0
+    avg_latency_ns: 223090.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000968324795806508
+    max_jitter_ns: 7400.0
+    max_latency_ns: 730830.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16300.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 43.0
+    avg_latency_ns: 50047.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000665488543238475
+    max_jitter_ns: 12410.0
+    max_latency_ns: 244760.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 20220.0
+    passed: true
+    thput_gbps: 48.828
+    thput_mpps: 11.472774517000001
+  imix:
+    avg_jitter_ns: 117.0
+    avg_latency_ns: 44015.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000956041452431526
+    max_jitter_ns: 21560.0
+    max_latency_ns: 555100.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 15840.0
+    passed: true
+    thput_gbps: 39.844
+    thput_mpps: 11.185010132999999
+platform: 2box_e810_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 1box_e810_ipv4: Results/best_result_R23.2_1box_e810_ipv4.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 234.0
+    avg_latency_ns: 22692.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000861348576936855
+    max_jitter_ns: 24160.0
+    max_latency_ns: 547720.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5350.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.6197457
+  1518bytes:
+    avg_jitter_ns: 344.0
+    avg_latency_ns: 125238.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000777202663300861
+    max_jitter_ns: 6730.0
+    max_latency_ns: 556240.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7100.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 7.0
+    avg_latency_ns: 27139.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000504160619110384
+    max_jitter_ns: 12510.0
+    max_latency_ns: 582850.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6460.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338167
+  imix:
+    avg_jitter_ns: 64.0
+    avg_latency_ns: 24218.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000735177515999603
+    max_jitter_ns: 18140.0
+    max_latency_ns: 545040.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5320.0
+    passed: true
+    thput_gbps: 42.1875
+    thput_mpps: 11.842944699999999
+platform: 1box_e810_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_1box_e810_ipv4_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 234.0
+    avg_latency_ns: 22692.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000861348576936855
+    max_jitter_ns: 24160.0
+    max_latency_ns: 547720.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5350.0
+    passed: true
+    thput_gbps: 16.961
+    thput_mpps: 12.6197457
+  1518bytes:
+    avg_jitter_ns: 344.0
+    avg_latency_ns: 125238.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000777202663300861
+    max_jitter_ns: 6730.0
+    max_latency_ns: 556240.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7100.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 7.0
+    avg_latency_ns: 27139.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000504160619110384
+    max_jitter_ns: 12510.0
+    max_latency_ns: 582850.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 6460.0
+    passed: true
+    thput_gbps: 49.6095
+    thput_mpps: 11.656338167
+  imix:
+    avg_jitter_ns: 64.0
+    avg_latency_ns: 24218.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000735177515999603
+    max_jitter_ns: 18140.0
+    max_latency_ns: 545040.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5320.0
+    passed: true
+    thput_gbps: 42.1875
+    thput_mpps: 11.842944699999999
+platform: 1box_e810_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 2box_v710_ipv6: Results/best_result_R23.2_2box_v710_ipv6.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 827.0
+    avg_latency_ns: 27412.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000528581809671288
+    max_jitter_ns: 396850.0
+    max_latency_ns: 427860.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14030.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 887.0
+    avg_latency_ns: 28384.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000152761722426161
+    max_jitter_ns: 371470.0
+    max_latency_ns: 401070.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18850.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 594.0
+    avg_latency_ns: 32828.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000553434734407496
+    max_jitter_ns: 374290.0
+    max_latency_ns: 427210.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18180.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 34646.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000982202801065529
+    max_jitter_ns: 416310.0
+    max_latency_ns: 445910.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16710.0
+    passed: true
+    thput_gbps: 30.077999999999996
+    thput_mpps: 8.443605867
+platform: 2box_v710_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_2box_v710_ipv6_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 827.0
+    avg_latency_ns: 27412.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000528581809671288
+    max_jitter_ns: 396850.0
+    max_latency_ns: 427860.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14030.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 887.0
+    avg_latency_ns: 28384.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000152761722426161
+    max_jitter_ns: 371470.0
+    max_latency_ns: 401070.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18850.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 594.0
+    avg_latency_ns: 32828.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000553434734407496
+    max_jitter_ns: 374290.0
+    max_latency_ns: 427210.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18180.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 34646.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000982202801065529
+    max_jitter_ns: 416310.0
+    max_latency_ns: 445910.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16710.0
+    passed: true
+    thput_gbps: 30.077999999999996
+    thput_mpps: 8.443605867
+platform: 2box_v710_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 2box_v710_ipv4: Results/best_result_R23.2_2box_v710_ipv4.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 874.0
+    avg_latency_ns: 21868.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000354785388472294
+    max_jitter_ns: 383670.0
+    max_latency_ns: 409090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 10.0705
+    thput_mpps: 7.4927926
+  1518bytes:
+    avg_jitter_ns: 870.0
+    avg_latency_ns: 28371.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000374573635174984
+    max_jitter_ns: 440430.0
+    max_latency_ns: 463950.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18610.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 627.0
+    avg_latency_ns: 26640.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000683257189719816
+    max_jitter_ns: 434360.0
+    max_latency_ns: 482550.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16750.0
+    passed: true
+    thput_gbps: 32.422
+    thput_mpps: 7.617922033
+  imix:
+    avg_jitter_ns: 799.0
+    avg_latency_ns: 24361.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000971181603846185
+    max_jitter_ns: 388020.0
+    max_latency_ns: 422260.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 23.469
+    thput_mpps: 6.588194533
+platform: 2box_v710_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_2box_v710_ipv4_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 874.0
+    avg_latency_ns: 21868.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000354785388472294
+    max_jitter_ns: 383670.0
+    max_latency_ns: 409090.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 10.0705
+    thput_mpps: 7.4927926
+  1518bytes:
+    avg_jitter_ns: 870.0
+    avg_latency_ns: 28371.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000374573635174984
+    max_jitter_ns: 440430.0
+    max_latency_ns: 463950.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 18610.0
+    passed: true
+    thput_gbps: 43.3595
+    thput_mpps: 3.5240067
+  512bytes:
+    avg_jitter_ns: 627.0
+    avg_latency_ns: 26640.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000683257189719816
+    max_jitter_ns: 434360.0
+    max_latency_ns: 482550.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 16750.0
+    passed: true
+    thput_gbps: 32.422
+    thput_mpps: 7.617922033
+  imix:
+    avg_jitter_ns: 799.0
+    avg_latency_ns: 24361.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000971181603846185
+    max_jitter_ns: 388020.0
+    max_latency_ns: 422260.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 14060.0
+    passed: true
+    thput_gbps: 23.469
+    thput_mpps: 6.588194533
+platform: 2box_v710_ipv4
+project: jcnr_new
+release: R23.2
+username: ping
+
+generating best result yaml for 1box_v710_ipv6: Results/best_result_R23.2_1box_v710_ipv6.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 822.0
+    avg_latency_ns: 16378.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000579848250343357
+    max_jitter_ns: 436760.0
+    max_latency_ns: 443800.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5890.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 720.0
+    avg_latency_ns: 57664.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000299397332036743
+    max_jitter_ns: 270250.0
+    max_latency_ns: 373690.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 9230.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 18389.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000713976204716606
+    max_jitter_ns: 393560.0
+    max_latency_ns: 402270.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7150.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 730.0
+    avg_latency_ns: 15156.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.00064641269395173
+    max_jitter_ns: 400580.0
+    max_latency_ns: 407810.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5850.0
+    passed: true
+    thput_gbps: 25.7815
+    thput_mpps: 7.2373785
+platform: 1box_v710_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+backup with a timestamped yaml: Results/best_result_R23.2_1box_v710_ipv6_20230516_214721.yaml...
+
+category: jcnr_l2_perf
+data:
+  148bytes:
+    avg_jitter_ns: 822.0
+    avg_latency_ns: 16378.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000579848250343357
+    max_jitter_ns: 436760.0
+    max_latency_ns: 443800.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5890.0
+    passed: true
+    thput_gbps: 10.836000000000002
+    thput_mpps: 8.062454267
+  1518bytes:
+    avg_jitter_ns: 720.0
+    avg_latency_ns: 57664.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000299397332036743
+    max_jitter_ns: 270250.0
+    max_latency_ns: 373690.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 9230.0
+    passed: true
+    thput_gbps: 50.0
+    thput_mpps: 4.063719133
+  512bytes:
+    avg_jitter_ns: 596.0
+    avg_latency_ns: 18389.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.000713976204716606
+    max_jitter_ns: 393560.0
+    max_latency_ns: 402270.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 7150.0
+    passed: true
+    thput_gbps: 34.375
+    thput_mpps: 8.076833133000001
+  imix:
+    avg_jitter_ns: 730.0
+    avg_latency_ns: 15156.0
+    comment: ''
+    env: ''
+    frame_loss_perc: 0.00064641269395173
+    max_jitter_ns: 400580.0
+    max_latency_ns: 407810.0
+    metadata: {}
+    min_jitter_ns: 0.0
+    min_latency_ns: 5850.0
+    passed: true
+    thput_gbps: 25.7815
+    thput_mpps: 7.2373785
+platform: 1box_v710_ipv6
+project: jcnr_new
+release: R23.2
+username: ping
+
+all done!
