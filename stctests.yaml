@@ -1,28 +1,63 @@
 stcinfo:
+  # -c: chassis ip
   chassisip: "10.204.216.89"
-  xmlconfname: "stc-working-configs/JCNR_L2_Perf_IPv4-p1p3.tcc.xml"
-  stcports: "12/2 12/8"         #single test
-  test_comment: ""              #single test
 
-  # "task_type": "full" or "dbread"
-  #    "full" - run full test by tester
-  #    "tester" - run tester only, no db read
-  #    "dbread" - read test info from db, no need to run test by tester
+  # -T: "task_type": "full" or "dbread"
+  #    "runtester" - run tester only, no db read
+  #    "readdb" - read test info from db, no need to run test by tester
+  #    "full" - both run tester and read db
   task_type: "full"             
-  task_type: "dbread"
+  task_type: "readdb"
 
-  #"task_run_by": determines what tests the tester will run:
-  #    "task_list" - run tests in task_list
-  #    "task_tags" - run tests in task_list_with_tags that match task_tag_selector
+  # -t: "task_run_by": determines what tests the tester will run:
+  #    "single" - run a single test defined by "stcports", "xmlconfname"
+  #    "task_list" - run tests defined in task_list
+  #    "task_tags" - run tests defined in task_list_with_tags that match task_tag_selector
   #    "all" - run all tests in test_list and task_list_with_tags
-  #    "single" - run single test defined by "stcports", "xmlconfname"
-  #    not define: same as "single"
-
+  #    not defined: same as "single"
   task_run_by: "task_list"    # "task_list", "task_tags", "single" or "all"
   #task_run_by: "task_tags"
   #task_run_by: "all"
+  # -I: how many times to run the same test
+  test_iterations: 1
 
+  # -m: test_mode: 
+  #   "normal" run tests and create a new folder to keep results
+  #   "retest" same as "normal", but reuse the last folder to keep results
+  #      this will make the result calculation based on both the last and
+  #      current results
+  test_mode: "normal"
+
+  # TODO
+  result_yaml_dict:
+    project  : "jcnr_new"
+    category : "jcnr_l3_perf"
+    release  : "R23_2"
+    platform : "auto"
+    username : "ping"
+    data     : "auto"
+
+  test_topos:
+    - ["12/1,12/3", "1box_e810"]
+    - ["12/3,12/5", "2box_e810"]
+    - ["12/1,12/5", "2box_e810"]
+    - ["12/2,12/8", "2box_v710"]
+    - ["12/2,12/7", "1box_v710"]
+    - ["12/7,12/8", "2box_v710"]
+
+  # xmlconfname and stcports: define a single test
+  # -x: xmlconfname: "stc-working-configs/JCNR_L2_Perf_IPv4-p1p3.tcc.xml"
+  xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv4-p2p7.tcc.xml"
+
+  # -p: stcports: "12/1 12/3"
+  # for L3 tests: port order matters! 
+  # good practice: use "reorder port" in stc to make sure always asending order
+  stcports: "12/2 12/7"
+  test_comment: ""
+
+  # -t: task_list: define a list of "static" tasks 
   task_list:
+    ### L2 tests
     #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
     #  stcports: "12/1 12/3"
     #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
@@ -32,28 +67,41 @@ stcinfo:
     #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
     #  stcports: "12/1 12/3"
 
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+    #  stcports: "12/2 12/7"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+    #  stcports: "12/2 12/7"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+    #  stcports: "12/2 12/7"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+    #  stcports: "12/2 12/7"
+
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
+    #  stcports: "12/7 12/8"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+    #  stcports: "12/7 12/8"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+    #  stcports: "12/7 12/8"
+    #- xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+    #  stcports: "12/7 12/8"
+
+    ### L3 tests
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv4-p2p7.tcc.xml"
       stcports: "12/2 12/7"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv4-p2p7-imix.tcc.xml"
       stcports: "12/2 12/7"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv6-p2p7.tcc.xml"
       stcports: "12/2 12/7"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv6-p2p7-imix.tcc.xml"
       stcports: "12/2 12/7"
 
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4-imix.xml"
-      stcports: "12/7 12/8"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
-      stcports: "12/7 12/8"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6-imix.xml"
-      stcports: "12/7 12/8"
-    - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv6.xml"
-      stcports: "12/7 12/8"
-
+  # -s: task_tag_selector: define a list of tags to select tests from task_list_with_tags
   task_tag_selector: ["v710"]
   task_tag_selector: ["imix", "v710", "ipv6"]
+
+  # -l: task_list_with_tags: define a list of "dynamic" tasks
   task_list_with_tags:
-    # e810-1box tests
+    # e810-1box l2 tests
     - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
       stcports: "12/1 12/3"
       test_comment: ""
@@ -71,7 +119,7 @@ stcinfo:
       test_comment: ""
       tags: ["e810", "1box", "imix", "ipv6", "l2"]
 
-    # e810-2box tests
+    # e810-2box l2 tests
     - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
       stcports: "12/3 12/5"
       test_comment: ""
@@ -89,7 +137,7 @@ stcinfo:
       test_comment: ""
       tags: ["e810", "2box", "imix", "ipv6", "l2"]
 
-    # v710-1box tests
+    # v710-1box l2 tests
     - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
       stcports: "12/2 12/7"
       test_comment: ""
@@ -107,7 +155,7 @@ stcinfo:
       test_comment: ""
       tags: ["v710", "1box", "imix", "ipv6", "l2"]
 
-    # v710-2box tests
+    # v710-2box l2 tests
     - xmlconfname: "stc-working-configs/JCNR_L2_Perf_np_IPv4.xml"
       stcports: "12/2 12/8"
       test_comment: ""
@@ -124,3 +172,23 @@ stcinfo:
       stcports: "12/2 12/8"
       test_comment: ""
       tags: ["v710", "2box", "imix", "ipv6", "l2"]
+
+    ### v710-1box L3 tests
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv4-p2p7.tcc.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "fixed", "ipv4", "l3"]
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv4-p2p7-imix.tcc.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "imix", "ipv4", "l3"]
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv6-p2p7.tcc.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "fixed", "ipv6", "l3"]
+    - xmlconfname: "stc-working-configs/JCNR_L3_Perf_IPv6-p2p7-imix.tcc.xml"
+      stcports: "12/2 12/7"
+      test_comment: ""
+      tags: ["v710", "1box", "imix", "ipv6", "l3"]
+
+

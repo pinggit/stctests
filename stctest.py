@@ -3,14 +3,7 @@ import os
 from typing import Optional
 from StcPython import StcPython
 
-"""
-@dataclass
-class Stc:
-    stc: StcPython
-    chassisip: str
-
-stc = Stc(StcPython(), chassisip)
-"""
+#stc = Stc(StcPython(), chassisip)
 
 class Stctest:  #{{{1}}}
     """run stc test with xmlconfname on stcports
@@ -114,14 +107,14 @@ class Stctest:  #{{{1}}}
         #                         ResultType="")
         # print (debugwhat)
 
-    def cleanup(self):                  #{{{2}}}
+    def reset(self):                  #{{{2}}}
         print ("test done!")
         print ("chassisDisconnectAll...")
         self.stc.perform('chassisDisconnectAll')
         print ("resetConfig...")
         self.stc.perform('resetConfig')
 
-    def run_task_list(self):   # {{{2}}}
+    def run_task_list(self, iterations=1 ):   # {{{2}}}
         """
         run task list
         params:
@@ -132,26 +125,19 @@ class Stctest:  #{{{1}}}
             resultsdbs: list of resultsdb
         """
         resultsdbs = []
-        executed_task_list = []
 
-        for stc_task in self.task_list:
-            stcports = stc_task.get('stcports')
-            xmlconfname = stc_task.get('xmlconfname')
-
-            # remove duplicated tests which may be caused by task_run_by = 'all'
-            d1 = {'stcports': stcports, 'xmlconfname': xmlconfname}
-            if d1 in executed_task_list:
-                print (f"\nduplicated test skipped!")
-                print (f"{stcports} and {xmlconfname}...")
-                continue
-            else:
-                executed_task_list.append(d1)
-
-            print (f"\n== running test with {stcports}, {xmlconfname}...")
-            self.load_xml_conf(xmlconfname)
-            self.attach_ports(stcports)
-            self.start_sequencer()
-            resultsdb = self.export_results(xmlconfname, format="CSV")
-            self.cleanup()
-            resultsdbs.append(resultsdb)
-            return resultsdbs
+        for i in range(iterations):     #test multiple iterations
+            print(f"\n=== iteration {i+1}/{iterations}")
+            for stc_task in self.task_list:
+                stcports = stc_task.get('stcports')
+                xmlconfname = stc_task.get('xmlconfname')
+                print (f"\n==== running test with {stcports}, {xmlconfname}...")
+                # import ipdb; ipdb.set_trace()
+                self.load_xml_conf(xmlconfname)
+                self.attach_ports(stcports)
+                sleep(10)   # not sure if it's necessary, seen issues without it
+                self.start_sequencer()
+                resultsdb = self.export_results(xmlconfname, format="CSV")
+                self.reset()
+                resultsdbs.append(resultsdb)
+        return resultsdbs

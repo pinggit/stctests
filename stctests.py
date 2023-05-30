@@ -1,33 +1,42 @@
 #TODO {{{1}}}
-# - [ ] post to portal
-# - [ ] k8s client operation
+# - [ ] portal - plotly dash
+# - [ ] portal - csv
+# - [ ] retest failed tests automatically?
+# - [ ] generate results from different runs
+# -     [ ] last run
+# -     [ ] last N runs
+# -     [ ] list of run IDs
+# - [ ] add k8s client operation
+# - [ ] add ssh operation
 # - [ ] add jenkins
 # - [ ] add email notification
 # - [ ] add object chaining, method returning another object
 # - [ ] add result validation
-# - [ ] change to pytest
+# - [ ] support pytest
 # - [ ] save results to DB during test
 # - [ ] add documentation
+# - [ ] tester ports sequence
+# - [ ] run multiple tests
 # - [x] use only "passed" results
 # - [x] add yaml config
-# - [x] run multiple tests
 # - [x] generate yaml
 # - [x] scan multiple db files
 # - [x] change to class/oob
 # - [x] support "tag" in yaml config
 # - [x] add argparse
 # - [x] git/github version control
+# - [x] retest failed tests and merge results
+# - [x] move all hard-coded info to config file
 
 # imports {{{1}}}
 import os
 from datetime import datetime
 from pprint import pprint as pp
-import argparse
-from argsparsing import argsparsing
-import json
-#from dataclasses import dataclass
+from argsparsing import Argsparsing
+#import json
 #from array import array
-
+from stctest import Stctest
+from bestresult import Bestresult
 """
 # for interactive testing
 import bestresult
@@ -37,94 +46,69 @@ importlib.reload(bestresult)
 importlib.reload(stctest)
 """
 
-from stctest import Stctest
-from bestresult import Bestresult
+def testrunfolder_last():  # {{{1}}}
+    # the last testrunfolder
+    return max(
+        os.path.join("Results", d) for d in os.listdir("Results")
+            if os.path.isdir(os.path.join("Results", d))
+    )
 
-timestamp_start=datetime.now().strftime('%Y%m%d_%H%M%S') # record start time
-print (f"\n= stctests.py: {timestamp_start}")
+def main():  # {{{1}}}
+    timestamp_start=datetime.now().strftime('%Y%m%d_%H%M%S') # record start time
+    print (f"\n= stctests.py: {timestamp_start}")
 
-# Define the type for the dictionary argument
-def dict_arg(value):
-    try:
-        return json.loads(value)
-    except:
-        raise argparse.ArgumentTypeError('Invalid JSON format')
+    Argsparsing.args_add()   #add args
+    # evaluating CLI and yaml config and get the final params {{{2}}}
+    Args = Argsparsing.args_parsing()
+    # task_type, chassisip, task_list, db_dir, test_iterations, test_mode = 
 
-parser = argparse.ArgumentParser(description='STC test')
+    print (f"\n=== final tasks to run:\n")
+    print (f"task_type: {Args.task_type}, chassisip: {Args.chassisip}")
+    print (f"task_list:")
+    pp(Args.task_list)
 
-parser.add_argument('--config', '-c', default='stctests.yaml',
-                    help='config file name')
-parser.add_argument('--chassisip', '-i', default="10.204.216.89",
-                    help='Spirent test center (STC) chassis ip')
-parser.add_argument('--stcports', '-p', help='STC ports, e.g. "1/1 1/2"')
-parser.add_argument('--xmlconfname', '-x', help='STC xml config file name')
-parser.add_argument('--task_type', '-T', default='full', help='task type',
-                    choices=['tester', 'dbread', 'full'])
+    if Args.task_type in ["runtester", "full"]:
+        # run task_list on tester {{{2}}}
+        print (f"\n== task_type: {Args.task_type}: run stc task_list...")
+        stctest = Stctest(Args.chassisip, Args.task_list)
+        resultsdbs = stctest.run_task_list(Args.test_iterations)
 
-parser.add_argument('--db_dir', '-d', help='db directory')
-parser.add_argument('--task_run_by', '-t', help='task run by',
-                    choices=['task_list', 'task_tags', 'all', 'single'])
+        # get best results from resultsdbs
+        # best_result_dicts = get_best_result_from_dbs(resultsdbs)
 
-# usage: --task_tag_selector v710 ipv4
-parser.add_argument('--task_tag_selector', '-s', nargs="*", default='v710',
-                    help='task tag selector')
+        # clearn up test results {{{2}}}
+        print ("\n== cleaning up test results...")
+        if Args.test_mode == "normal":
+            testrunfolder = os.path.join("Results", "testrun_"+timestamp_start)
+            os.makedirs(testrunfolder)
+            print (f"test_mode: {Args.test_mode}, create new testrunfolder: "
+                   f"{testrunfolder}...")
+        else:   # test_mode == "retest"
+            testrunfolder = testrunfolder_last()
+            print (f"test_mode: {Args.test_mode}, use last testrunfolder: "
+                   f"{testrunfolder}...")
+        os.system(f"mv Results/JCNR_L[23]_Perf* {testrunfolder}")
+        print(f"results moved from Results/JCNR_L2_Perf* to {testrunfolder}/...")
+        # os.system(f"mv JCNR_L2_Perf_* Report_counters")
+        # print(f"report counter files moved to Report_counters...")
 
-# usage: --task_list
-#   '[{"xmlconfname": "JCNR_L2_Perf_1.xml", "stcports": "1/1 1/2"}]'
-parser.add_argument('--task_list', '-l', nargs="*", type=dict_arg,
-                    help='task list')
+    if Args.task_type in ["readdb", "full"]:
+        # get best results from test result dbs {{{2}}}
+        print (f"\n== task_type: {Args.task_type}")
+        if not Args.db_dir:
+            Args.db_dir = testrunfolder_last()
+            print (f"db_dir not provided, use last testrunfolder: {Args.db_dir}...")
+        else:
+            Args.db_dir = os.path.join("Results", Args.db_dir)
+            print (f"use provided db_dir: {Args.db_dir}...")
+        bs1 = Bestresult(Args)
+        best_result_dicts = bs1.get_best_result_from_folder(Args.db_dir)
 
-# usage: --task_llist_with_tags
-#   '[{"xmlconfname": "JCNR_L2_Perf_1.xml", "stcports": "1/1 1/2", "tags": ["v710"]}]'
-parser.add_argument('--task_list_with_tags', '-L', nargs="*", type=dict_arg,
-                    help='task list with tags')
+        # write best results yaml into testrunfolder {{{2}}}
+        print ("\n== generating best results yaml into testrunfolder...")
+        bs1.generate_yaml(release="R23_2", yaml_dir=Args.db_dir)
 
-# Parse the command line arguments
-args = parser.parse_args()
-pp(args)
+    print ("all done!")
 
-# get the final params {{{1}}}
-# after evaluating the params from CLI and yaml config
-task_type, chassisip, task_list, db_dir = argsparsing(args)
-print (f"\n=== evaluated tasks to run:\n")
-print (f"task_type: {task_type}")
-print (f"chassisip: {chassisip}")
-print (f"task_list:")
-pp(task_list)
-
-testrunfolder = ""
-if task_type in ["tester", "full"]:
-    print (f"\n== task_type: {task_type}: run stc task_list...")
-    # if task_type is "tester", run task_list {{{1}}}
-    stctest = Stctest(chassisip, task_list)
-    resultsdbs = stctest.run_task_list()
-
-    # get best results from resultsdbs
-    # best_result_dicts = get_best_result_from_dbs(resultsdbs)
-
-    # clearn up test results {{{2}}}
-    print ("\n== cleaning up test results...")
-    testrunfolder = os.path.join("Results", "testrun_"+timestamp_start)
-    os.makedirs(testrunfolder)
-    os.system(f"mv Results/JCNR_L2_Perf* {testrunfolder}")
-    print(f"test results moved to {testrunfolder}/...")
-    # os.system(f"mv JCNR_L2_Perf_* Report_counters")
-    # print(f"report counter files moved to Report_counters...")
-
-if task_type in ["dbread", "full"]:
-    # if task_type is "dbread", get best results from testrunfolder {{{1}}}
-    print (f"\n== task_type: {task_type}: parsing data from db_dir...")
-    if not db_dir:
-        # get the last testrunfolder
-        db_dir = max(
-            os.path.join("Results", d) for d in os.listdir("Results") 
-                if os.path.isdir(os.path.join("Results", d))
-        )
-    bs1 = Bestresult()
-    best_result_dicts = bs1.get_best_result_from_folder(db_dir)
-
-    # write best results yaml into testrunfolder {{{2}}}
-    print ("\n== generating best results yaml into testrunfolder...")
-    bs1.generate_yaml(release="R23.2", yaml_dir=db_dir)
-
-print ("all done!")
+if __name__ == "__main__":
+    main()

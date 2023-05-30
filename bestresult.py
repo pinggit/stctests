@@ -6,20 +6,49 @@ import os
 
 class Bestresult:
     NIC_BW=25   #Gbps
+    best_result_dict = {}
+    best_result_dicts = {}
 
-    def __init__(self):
+    def __init__(self, Args=None):
         self.best_result_dict = {}
         self.best_result_dicts = {}
+        self.Args = Args
+
+        # TODO: read dBoxmode from config file
 
     def get_best_result_from_rows(self, rows, best_result_dict={}):   # {{{1}}}
+        """get best result from rows, and update best_result_dict
+        params:
+            rows: list of rows, each row is a list of values
+            best_result_dict: dict of best results, key is test name, value is
+                a dict of best results
+        return:
+            best_result_dict
+
+			{'ipv4_v710_1box': {'148bytes': {'avg_jitter_ns': 854.0,
+								'comment': '',
+								'env': '',
+								'frame_loss_perc': 0.000618012295796062,
+								'max_jitter_ns': 428330.0,
+								'max_latency_ns': 437650.0,
+								'metadata': {},
+								'min_jitter_ns': 0.0,
+								'min_latency_ns': 5980.0,
+								'passed': True,
+								'thput_gbps': 10.453,
+								'thput_mpps': 7.777623033},
+					'1518bytes': {'avg_jitter_ns': 724.0,
+                    ...
+        """
+
         self.best_result_dict = best_result_dict
         for lrow in rows:
 
             # locate wanted columns
-            (framesize,framesize_type)                  = (lrow[i] for i in (0,1))
-            (thput_pps,thput_perc,frame_loss_perc)      = (lrow[i] for i in (2,3,4))
+            (framesize,framesize_type)                     = (lrow[i] for i in (0,1))
+            (thput_pps,thput_perc,frame_loss_perc)         = (lrow[i] for i in (2,3,4))
             (min_latency_us,max_latency_us,avg_latency_us) = (lrow[i] for i in (5,6,7))
-            (min_jitter_us,max_jitter_us,avg_jitter_us) = (lrow[i] for i in (8,9,10))
+            (min_jitter_us,max_jitter_us,avg_jitter_us)    = (lrow[i] for i in (8,9,10))
 
             if 'iMIX' in lrow: framesize = 'IMIX'
 
@@ -80,11 +109,18 @@ class Bestresult:
         return self.best_result_dict
 
     def get_best_result_from_db(self, resultsdb):  # {{{1}}}
+        """Get best result from STC resultsdb
+        params:
+            resultsdb: path to STC resultsdb
+        returns:
+            best_result_dict: dict of best results, 
+            same format as get_best_result_from_rows()
+        """
 
         sqlDumpAllTableNames="SELECT name FROM sqlite_master WHERE type='table';"
         table_thput="Rfc2544ThroughputPerFrameSizeResult"
-        sqlDumpTableThputRows=f"SELECT * FROM {table_thput};"
-        sqlDumpTableThputColumns=f"PRAGMA table_info({table_thput});"
+        # sqlDumpTableThputRows=f"SELECT * FROM {table_thput};"
+        # sqlDumpTableThputColumns=f"PRAGMA table_info({table_thput});"
         wantedColumns=("Result, FrameSize, FrameSizeType, "
                     "FrameRate, Throughput, PercentLoss, "
                     "MinLatency, MaxLatency, AvgLatency, "
@@ -101,7 +137,6 @@ class Bestresult:
         #     "JCNR_L2_Perf_IPv4-p1p3.tcc_2023-05-06_22-26-26/"
         #     "2544-Tput_2023-05-06_22-28-29/2544-Tput-Summary-1_2023-05-06_22-28-29.db"
         #     )
-
 
         # sqlite3 db operations {{{2}}}
         conn=sqlite3.connect(resultsdb)
@@ -170,15 +205,26 @@ class Bestresult:
         p1="/".join(rows_port_loc[0][0].split('/')[-2:])    #12/1
         p2="/".join(rows_port_loc[1][0].split('/')[-2:])    #12/3
         ports=",".join(sorted([p1,p2]))                     #12/1,12/3
-        dBoxmode = {
-            "12/1,12/3": "1box_e810",
-            "12/3,12/5": "2box_e810",
-            "12/1,12/5": "2box_e810",
-            "12/2,12/8": "2box_v710",
-            "12/2,12/7": "1box_v710",
-            "12/7,12/8": "2box_v710",
-        }
-        boxmode=dBoxmode.get(ports, "boxmode_unknown")
+        # dBoxmode = {
+        #     "12/1,12/3": "1box_e810",
+        #     "12/3,12/5": "2box_e810",
+        #     "12/1,12/5": "2box_e810",
+        #     "12/2,12/8": "2box_v710",
+        #     "12/2,12/7": "1box_v710",
+        #     "12/7,12/8": "2box_v710",
+        # }
+        # boxmode=dBoxmode.get(ports, "boxmode_unknown")
+
+        # test_topos:
+        #     - ["12/1,12/3", "1box_e810"]
+        #     - ["12/3,12/5", "2box_e810"]
+        #     - ["12/1,12/5", "2box_e810"]
+        #     - ["12/2,12/8", "2box_v710"]
+        #     - ["12/2,12/7", "1box_v710"]
+        #     - ["12/7,12/8", "2box_v710"]
+
+        test_topos = self.Args.stcconf['stcinfo'].get('test_topos')
+        boxmode = [topo[1] for topo in test_topos if topo[0] == ports][0]
 
         platform = boxmode+'_'+ipmode
 
@@ -244,12 +290,20 @@ class Bestresult:
 
             result_yaml_dict = {
                 "project"  : "jcnr_new",
-                "category" : "jcnr_l2_perf",
+                "category" : "jcnr_l3_perf",
                 "release"  : release,
                 "platform" : platform,
                 "username" : "ping",
                 "data"     : self.best_result_dicts[platform],
             }
+
+            # result_yaml_dict:
+            #     project  : "jcnr_new"
+            #     category : "jcnr_l3_perf"
+            #     release  : "R23_2"
+            #     platform : "auto"
+            #     username : "ping"
+            #     data     : "auto"
 
             yamlfile_fqdn = os.path.join(yaml_dir,
                                     f"best_result_{release}_{platform}.yaml")
@@ -270,7 +324,7 @@ class Bestresult:
         """
         send email with the best result
         """
-        self.logger.info(f"====sending email with the best result====")
+        print (f"====sending email with the best result====")
         # sendemail(self.yamlfile_fqdn, self.perf_config_dict['email_to'])
         # echo "Body" | mutt -a file -s "Subject" -- recipient1,recipient2
         # echo "Body" | mailx -s "Subject" -A file pings@juniper.net songpingemail@gmail.com
